@@ -5,6 +5,8 @@ from app.routers.buyers import router as buyers_router
 from app.routers.orders import router as orders_router
 from app.routers.hubs import router as hubs_router
 from app.routers.admin import router as admin_router
+from app.routers.driver import router as driver_router
+from app.routers.frontend_bridge import router as bridge_router
 
 __all__ = [
     "auth_router",
@@ -14,4 +16,6 @@ __all__ = [
     "orders_router",
     "hubs_router",
     "admin_router",
+    "driver_router",
+    "bridge_router",
 ]

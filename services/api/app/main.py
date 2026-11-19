@@ -8,7 +8,8 @@ from app.database import engine, Base
 from app.core.exceptions import KrishiLinkException
 from app.routers import (
     auth_router, catalog_router, farmers_router,
-    buyers_router, orders_router, hubs_router, admin_router
+    buyers_router, orders_router, hubs_router, admin_router,
+    driver_router, bridge_router
 )
 
 
@@ -70,6 +71,9 @@ app.include_router(buyers_router, prefix=settings.API_V1_PREFIX)
 app.include_router(orders_router, prefix=settings.API_V1_PREFIX)
 app.include_router(hubs_router, prefix=settings.API_V1_PREFIX)
 app.include_router(admin_router, prefix=settings.API_V1_PREFIX)
+app.include_router(driver_router, prefix=settings.API_V1_PREFIX)
+# Frontend compatibility bridge (bare /api/ paths — no v1 prefix)
+app.include_router(bridge_router)
 
 
 @app.get("/health", tags=["Health"])

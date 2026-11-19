@@ -47,6 +47,24 @@ class NotFoundException(KrishiLinkException):
         )
 
 
+class ConflictException(KrishiLinkException):
+    def __init__(self, message: str = "Resource conflict"):
+        super().__init__(
+            status_code=status.HTTP_409_CONFLICT,
+            code="CONFLICT",
+            message=message,
+        )
+
+
+class BusinessRuleException(KrishiLinkException):
+    def __init__(self, message: str):
+        super().__init__(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            code="BUSINESS_RULE_VIOLATION",
+            message=message,
+        )
+
+
 class ThresholdNotMetException(KrishiLinkException):
     def __init__(self, min_kg: float, actual_kg: float):
         super().__init__(
