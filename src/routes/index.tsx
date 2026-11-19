@@ -10,6 +10,9 @@ import { AdminLayout } from '../layouts/AdminLayout';
 // Role Guard
 import { RoleGuard } from './RoleGuard';
 
+// Landing Page
+import { LandingPage } from '../pages/LandingPage';
+
 // Auth Pages
 import { Login } from '../pages/auth/Login';
 import { VerifyOtp } from '../pages/auth/VerifyOtp';
@@ -62,10 +65,10 @@ const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 export const router = createBrowserRouter([
-  // Default redirect
+  // Landing page
   {
     path: '/',
-    element: <Navigate to="/buyer" replace />,
+    element: <LandingPage />,
   },
 
   // Auth routes

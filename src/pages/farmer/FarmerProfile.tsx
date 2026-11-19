@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useAuthStore } from '../../stores/authStore';
 import { useFarmerThreshold } from '../../features/listings/hooks';
 import { Button } from '../../components/ui/button';
@@ -15,6 +15,9 @@ import {
   ShieldCheck,
   Sprout,
   ArrowLeft,
+  Camera,
+  Trash2,
+  Upload,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -41,6 +44,42 @@ export const FarmerProfile: React.FC = () => {
 
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
+
+  // Profile Picture State (Base64 or preset emoji)
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string>(() => localStorage.getItem('farmer_avatar') || '');
+  const [avatarEmoji, setAvatarEmoji] = useState<string>(() => localStorage.getItem('farmer_avatar_emoji') || '👨‍🌾');
+
+  const handleAvatarFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert(isKn ? 'ಚಿತ್ರದ ಗಾತ್ರ 5MB ಗಿಂತ ಕಡಿಮೆ ಇರಬೇಕು' : 'Image size must be under 5MB');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        setAvatarUrl(result);
+        localStorage.setItem('farmer_avatar', result);
+        setSavedSuccess(true);
+        setTimeout(() => setSavedSuccess(false), 2500);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeAvatar = () => {
+    setAvatarUrl('');
+    localStorage.removeItem('farmer_avatar');
+  };
+
+  const selectEmoji = (emoji: string) => {
+    setAvatarEmoji(emoji);
+    localStorage.setItem('farmer_avatar_emoji', emoji);
+    setAvatarUrl('');
+    localStorage.removeItem('farmer_avatar');
+  };
 
   const handleSave = () => {
     if (user) {
@@ -86,15 +125,46 @@ export const FarmerProfile: React.FC = () => {
         </Button>
       </div>
 
+      {/* Hidden File Input for Avatar */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        accept="image/*"
+        className="hidden"
+        onChange={handleAvatarFile}
+      />
+
       {/* Profile Card */}
-      <div className="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-3.5">
-        <div className="h-16 w-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 flex items-center justify-center text-3xl font-bold shrink-0">
-          👨‍🌾
+      <div className="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
+        {/* Avatar with Camera Action Button */}
+        <div className="relative group shrink-0">
+          <div
+            onClick={() => fileInputRef.current?.click()}
+            className="h-20 w-20 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 flex items-center justify-center text-3xl font-bold cursor-pointer overflow-hidden border-2 border-emerald-500/30 hover:border-emerald-600 transition-all shadow-inner"
+            title={isKn ? 'ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ' : 'Click to upload photo'}
+          >
+            {avatarUrl ? (
+              <img src={avatarUrl} alt={farmerName} className="h-full w-full object-cover" />
+            ) : (
+              <span>{avatarEmoji}</span>
+            )}
+          </div>
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            className="absolute -bottom-1 -right-1 bg-emerald-600 hover:bg-emerald-700 text-white p-1.5 rounded-full shadow-md transition-transform active:scale-95"
+            aria-label="Upload Photo"
+            title="Upload Photo"
+          >
+            <Camera className="h-3.5 w-3.5" />
+          </button>
         </div>
-        <div className="space-y-1 min-w-0">
-          <h3 className="font-black text-lg text-slate-900 dark:text-white leading-tight">
-            {farmerName}
-          </h3>
+
+        <div className="space-y-1 min-w-0 flex-1">
+          <div className="flex items-center justify-between">
+            <h3 className="font-black text-lg text-slate-900 dark:text-white leading-tight truncate">
+              {farmerName}
+            </h3>
+          </div>
           <p className="text-xs font-semibold text-slate-500 flex items-center gap-1">
             <Phone className="h-3.5 w-3.5 text-emerald-600" />
             <span>{phone}</span>
@@ -107,6 +177,25 @@ export const FarmerProfile: React.FC = () => {
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
               {landAcres} {isKn ? 'ಎಕರೆ' : 'Acres'}
             </span>
+          </div>
+
+          <div className="pt-2 flex items-center gap-2">
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              className="text-[11px] font-bold text-emerald-600 hover:underline flex items-center gap-1"
+            >
+              <Upload className="h-3 w-3" />
+              <span>{isKn ? 'ಫೋಟೋ ಬದಲಾಯಿಸಿ' : 'Upload Photo'}</span>
+            </button>
+            {avatarUrl && (
+              <button
+                onClick={removeAvatar}
+                className="text-[11px] font-bold text-red-500 hover:underline flex items-center gap-1 ml-2"
+              >
+                <Trash2 className="h-3 w-3" />
+                <span>{isKn ? 'ತೆಗೆದುಹಾಕಿ' : 'Remove'}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -220,6 +309,64 @@ export const FarmerProfile: React.FC = () => {
         </DialogHeader>
 
         <div className="space-y-3 my-3 text-xs max-h-[60vh] overflow-y-auto pr-1">
+          {/* Avatar Selector in Dialog */}
+          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col gap-2">
+            <span className="font-bold text-slate-700 dark:text-slate-200">
+              {isKn ? 'ಪ್ರೊಫೈಲ್ ಫೋಟೋ ಅಥವಾ ಅವತಾರ್' : 'Profile Picture or Avatar'}
+            </span>
+            <div className="flex items-center gap-3">
+              <div className="h-14 w-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-2xl overflow-hidden shrink-0 border border-emerald-500/40">
+                {avatarUrl ? (
+                  <img src={avatarUrl} alt="Avatar" className="h-full w-full object-cover" />
+                ) : (
+                  <span>{avatarEmoji}</span>
+                )}
+              </div>
+              <div className="flex-1 space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="text-xs font-bold gap-1 py-1"
+                  >
+                    <Upload className="h-3 w-3" />
+                    <span>{isKn ? 'ಫೋಟೋ ಆರಿಸಿ' : 'Choose Photo'}</span>
+                  </Button>
+                  {avatarUrl && (
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      onClick={removeAvatar}
+                      className="text-xs font-bold text-red-500 gap-1 py-1"
+                    >
+                      <Trash2 className="h-3 w-3" />
+                      <span>{isKn ? 'ತೆಗೆಯಿರಿ' : 'Remove'}</span>
+                    </Button>
+                  )}
+                </div>
+                <div className="flex items-center gap-1.5 pt-1">
+                  {['👨‍🌾', '👩‍🌾', '🌾', '🚜', '🌱', '🍅'].map((emoji) => (
+                    <button
+                      key={emoji}
+                      type="button"
+                      onClick={() => selectEmoji(emoji)}
+                      className={`h-7 w-7 rounded-lg text-base flex items-center justify-center border transition-all ${
+                        !avatarUrl && avatarEmoji === emoji
+                          ? 'border-emerald-600 bg-emerald-100 scale-110'
+                          : 'border-slate-200 dark:border-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      {emoji}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div>
             <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">
               {isKn ? 'ರೈತರ ಪೂರ್ಣ ಹೆಸರು *' : 'Farmer Full Name *'}

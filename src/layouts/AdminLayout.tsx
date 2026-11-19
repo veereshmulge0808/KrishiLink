@@ -23,6 +23,8 @@ import {
   User as UserIcon,
   ShieldCheck,
   Monitor,
+  LogOut,
+  BadgeCheck,
 } from 'lucide-react';
 import { RoleSwitcher } from '../routes/RoleSwitcher';
 import { LanguageSwitch } from '../components/common/LanguageSwitch';
@@ -39,16 +41,17 @@ export const AdminLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { darkMode, toggleDarkMode, sidebarOpen, toggleSidebar } = useUiStore();
-  const { user, setUser } = useAuthStore();
+  const { user, setUser, logout } = useAuthStore();
   const { data: alerts = [] } = useAlerts();
   const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
   // Admin profile state
-  const [adminName, setAdminName] = useState(user?.name || 'Anita Rao');
+  const [adminName, setAdminName] = useState(user?.name || 'Anita Rao (Ops Tower)');
+  const [employeeId, setEmployeeId] = useState('KL-OPS-8841');
   const [adminEmail, setAdminEmail] = useState('ops.tower@krishilink.in');
-  const [adminPhone, setAdminPhone] = useState(user?.phone || '+91 98765 43204');
+  const [adminPhone, setAdminPhone] = useState(user?.phone || '+919876543204');
   const [adminRoleTitle, setAdminRoleTitle] = useState('Senior Logistics Control Tower Lead');
 
   const handleSaveProfile = () => {
@@ -56,6 +59,12 @@ export const AdminLayout: React.FC = () => {
       setUser({ ...user, name: adminName, phone: adminPhone });
     }
     setProfileOpen(false);
+  };
+
+  const handleAdminLogout = () => {
+    setProfileOpen(false);
+    logout();
+    navigate('/');
   };
 
   const navSections = [
@@ -280,19 +289,24 @@ export const AdminLayout: React.FC = () => {
           <DialogHeader>
             <DialogTitle>Admin Control Tower Account</DialogTitle>
             <DialogDescription>
-              Manage Super Administrator credentials and hub operations dispatch permissions.
+              Manage Super Administrator credentials, employee identification, and hub operations dispatch permissions.
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-4 my-3 text-xs">
             <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
-              <div className="h-12 w-12 rounded-xl bg-emerald-600 text-white font-black text-lg flex items-center justify-center">
+              <div className="h-12 w-12 rounded-xl bg-emerald-600 text-white font-black text-lg flex items-center justify-center shrink-0">
                 AR
               </div>
-              <div>
-                <p className="font-extrabold text-sm text-slate-900 dark:text-white">{adminName}</p>
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <p className="font-extrabold text-sm text-slate-900 dark:text-white">{adminName}</p>
+                  <span className="font-mono text-[10px] font-black px-2 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">
+                    ID: {employeeId}
+                  </span>
+                </div>
                 <p className="text-slate-500 font-semibold">{adminRoleTitle}</p>
-                <span className="inline-block mt-0.5 text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full dark:bg-emerald-950 dark:text-emerald-300">
+                <span className="inline-block text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full dark:bg-emerald-950 dark:text-emerald-300">
                   Full Root Ops Privileges ✓
                 </span>
               </div>
@@ -309,6 +323,19 @@ export const AdminLayout: React.FC = () => {
                 />
               </div>
               <div>
+                <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Employee ID *</label>
+                <input
+                  type="text"
+                  value={employeeId}
+                  onChange={(e) => setEmployeeId(e.target.value)}
+                  placeholder="e.g. KL-OPS-8841"
+                  className="w-full rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 font-mono font-bold dark:bg-slate-800"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
                 <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Official Email</label>
                 <input
                   type="email"
@@ -317,9 +344,6 @@ export const AdminLayout: React.FC = () => {
                   className="w-full rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 font-semibold dark:bg-slate-800"
                 />
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Phone Number</label>
                 <input
@@ -329,25 +353,37 @@ export const AdminLayout: React.FC = () => {
                   className="w-full rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 font-semibold dark:bg-slate-800"
                 />
               </div>
-              <div>
-                <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Assigned Base Station</label>
-                <input
-                  type="text"
-                  disabled
-                  value="Bengaluru Central Ops Hub (Yeshwanthpur)"
-                  className="w-full rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 font-bold bg-slate-100 dark:bg-slate-800/60 text-slate-500"
-                />
-              </div>
+            </div>
+
+            <div>
+              <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Assigned Base Station</label>
+              <input
+                type="text"
+                disabled
+                value="Bengaluru Central Ops Hub (Yeshwanthpur APMC)"
+                className="w-full rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 font-bold bg-slate-100 dark:bg-slate-800/60 text-slate-500"
+              />
             </div>
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setProfileOpen(false)}>
-              Cancel
+          <DialogFooter className="flex-col sm:flex-row gap-2 justify-between">
+            <Button
+              variant="outline"
+              onClick={handleAdminLogout}
+              className="text-red-600 hover:bg-red-50 border-red-200 dark:border-red-900 font-bold flex items-center justify-center gap-1.5"
+            >
+              <LogOut className="h-4 w-4" />
+              <span>Log Out</span>
             </Button>
-            <Button onClick={handleSaveProfile} className="bg-primary hover:bg-primary-700 text-white font-bold">
-              Save Account Profile
-            </Button>
+
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => setProfileOpen(false)}>
+                Cancel
+              </Button>
+              <Button onClick={handleSaveProfile} className="bg-primary hover:bg-primary-700 text-white font-bold">
+                Save Account Profile
+              </Button>
+            </div>
           </DialogFooter>
         </Dialog>
       </div>

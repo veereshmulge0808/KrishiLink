@@ -155,29 +155,6 @@ export const LiveMap: React.FC<LiveMapProps> = ({
 
   return (
     <div className={`relative ${className} border border-slate-200 dark:border-slate-800 shadow-inner`}>
-      {showLayerControls && (
-        <div className="absolute top-3 left-3 z-[1000] flex flex-wrap gap-1 bg-white/90 p-1.5 rounded-xl shadow-md backdrop-blur-sm text-xs font-medium dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700">
-          <button
-            onClick={() => setLayers((l) => ({ ...l, vehicles: !l.vehicles }))}
-            className={`px-2 py-1 rounded-lg ${layers.vehicles ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}`}
-          >
-            🚚 Fleet
-          </button>
-          <button
-            onClick={() => setLayers((l) => ({ ...l, stops: !l.stops }))}
-            className={`px-2 py-1 rounded-lg ${layers.stops ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-700'}`}
-          >
-            📍 Stops
-          </button>
-          <button
-            onClick={() => setLayers((l) => ({ ...l, hubs: !l.hubs }))}
-            className={`px-2 py-1 rounded-lg ${layers.hubs ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-700'}`}
-          >
-            🏢 Hubs
-          </button>
-        </div>
-      )}
-
       <MapContainer
         center={activeCenter}
         zoom={zoom}
