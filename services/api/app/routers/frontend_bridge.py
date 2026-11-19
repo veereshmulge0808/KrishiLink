@@ -21,6 +21,13 @@ The Vite frontend (agritransit origin) calls these legacy paths:
   POST /api/logistics/shipments/{id}/milestone → update trip status
   POST /api/logistics/shipments/{id}/telemetry → GPS ping
 
+Security contract:
+  - Demo login (any-password) works ONLY when settings.demo_login_allowed is True
+    (ENVIRONMENT=development AND DEMO_LOGIN_ENABLED=true)
+  - In production, demo paths return 403 immediately
+  - Register cannot create ADMIN or SUPER_ADMIN roles
+  - JWT is always issued from the DB user's role, never from request payload
+
 All routes mount under prefix "" (bare /api/...) since vite.config.js
 already proxies /api → http://127.0.0.1:8000, so FastAPI sees /api/...
 """
@@ -28,10 +35,11 @@ import uuid
 from datetime import date, datetime, timezone
 from typing import Optional, List
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, HTTPException, status
 from sqlalchemy.orm import Session
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
+from app.config import settings
 from app.database import get_db
 from app.core.dependencies import get_current_user
 from app.core.security import create_access_token
@@ -49,13 +57,62 @@ from app.models.enums import (
 
 router = APIRouter(tags=["Frontend Bridge"])
 
-# ─── Shared helper ────────────────────────────────────────────────────────────
+# Roles that the registration API is NEVER allowed to assign
+_PROTECTED_ROLES = {"admin", "super_admin", "ADMIN", "SUPER_ADMIN"}
+
+
+# ─── Shared helpers ───────────────────────────────────────────────────────────
 
 def _now_utc():
     return datetime.now(timezone.utc)
 
 
-# ─── Auth: email+password → token (dev convenience) ──────────────────────────
+def _require_demo_mode():
+    """Fail closed: raise 403 if demo login is not explicitly enabled."""
+    if not settings.demo_login_allowed:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={
+                "error": {
+                    "code": "DEMO_DISABLED",
+                    "message": (
+                        "Demo login is disabled in this environment. "
+                        "Use the OTP flow at /api/v1/auth/otp/request."
+                    ),
+                }
+            },
+        )
+
+
+def _user_to_dict(user: User) -> dict:
+    return {
+        "id": str(user.id),
+        "phone": user.phone,
+        "name": user.name,
+        "role": user.role.value if hasattr(user.role, "value") else user.role,
+        "email": getattr(user, "email", None),
+        "zone": "Bengaluru",
+    }
+
+
+def _make_token_response(user: User) -> dict:
+    # Token role comes from DB, never from request
+    token = create_access_token(user_id=user.id, role=user.role)
+    return {"access_token": token, "token_type": "bearer", "user": _user_to_dict(user)}
+
+
+# ─── Demo user map (dev only) ─────────────────────────────────────────────────
+
+DEMO_USERS = {
+    "farmer@agriflow.io":    UserRole.FARMER,
+    "buyer@agriflow.io":     UserRole.BUYER,
+    "logistics@agriflow.io": UserRole.DRIVER,
+    # admin@agriflow.io is intentionally excluded — admins must be seeded in DB directly
+    "hubstaff@agriflow.io":  UserRole.HUB_STAFF,
+}
+
+
+# ─── Auth: email+password → token ────────────────────────────────────────────
 
 class LoginIn(BaseModel):
     email: Optional[str] = None
@@ -71,82 +128,100 @@ class RegisterIn(BaseModel):
     password: Optional[str] = None
 
 
-def _user_to_dict(user: User) -> dict:
-    return {
-        "id": str(user.id),
-        "phone": user.phone,
-        "name": user.name,
-        "role": user.role.value if hasattr(user.role, "value") else user.role,
-        "email": getattr(user, "email", None),
-        "zone": "Bengaluru",
-    }
-
-
-def _make_token_response(user: User) -> dict:
-    token = create_access_token(user_id=user.id, role=user.role)
-    return {"access_token": token, "token_type": "bearer", "user": _user_to_dict(user)}
-
-
-DEMO_USERS = {
-    "farmer@agriflow.io":    UserRole.FARMER,
-    "buyer@agriflow.io":     UserRole.BUYER,
-    "logistics@agriflow.io": UserRole.DRIVER,
-    "admin@agriflow.io":     UserRole.ADMIN,
-    "hubstaff@agriflow.io":  UserRole.HUB_STAFF,
-}
-
-
 @router.post("/api/auth/login")
 def bridge_login(payload: LoginIn, db: Session = Depends(get_db)):
+    """
+    Development demo login only. Any password accepted for known demo accounts.
+    Fails with 403 in production (ENVIRONMENT != development or DEMO_LOGIN_ENABLED=false).
+    """
+    _require_demo_mode()
+
     identifier = (payload.email or payload.phone or "").lower().strip()
-    # Look up by phone first, then match demo accounts
+    if not identifier:
+        raise HTTPException(status_code=400, detail="email or phone is required")
+
+    # Look up existing user by phone/identifier first
     user = db.query(User).filter(User.phone == identifier).first()
+
     if not user and identifier in DEMO_USERS:
-        # Auto-create demo user on first login
+        # Auto-create demo user on first login (dev only — gate already checked above)
         role = DEMO_USERS[identifier]
-        user = User(phone=identifier, name=identifier.split("@")[0].title(), role=role)
+        user = User(phone=identifier, name=identifier.split("@")[0].replace(".", " ").title(), role=role)
         db.add(user)
         db.commit()
         db.refresh(user)
-        # Create profile
+        # Seed minimal profile
         if role == UserRole.FARMER:
-            db.add(Farmer(user_id=user.id, village="Demo Village", district="Bengaluru", approved=True))
+            db.add(Farmer(user_id=user.id, village="Demo Village", district="Bengaluru Urban", approved=True))
         elif role == UserRole.BUYER:
-            db.add(Buyer(user_id=user.id, business_name="Demo Buyer", approved=True))
+            db.add(Buyer(user_id=user.id, business_name="Demo Buyer Co.", approved=True))
         elif role == UserRole.DRIVER:
             v = db.query(Vehicle).first()
             db.add(Driver(user_id=user.id, licence_no="DEMO001", vehicle_id=v.id if v else None, on_duty=True))
+        elif role == UserRole.HUB_STAFF:
+            from app.models.hub import HubStaff
+            h = db.query(Hub).first()
+            if h:
+                db.add(HubStaff(user_id=user.id, hub_id=h.id))
         db.commit()
         db.refresh(user)
+
     if not user:
-        # Create a new user with phone
-        role = UserRole.FARMER
-        user = User(phone=identifier or "+910000000000", name="New User", role=role)
-        db.add(user)
-        db.commit()
-        db.refresh(user)
+        # Unknown identifier in dev mode — still refuse silently to prevent enumeration
+        raise HTTPException(
+            status_code=401,
+            detail={"error": {"code": "INVALID_CREDENTIALS", "message": "Unknown demo account."}}
+        )
+
     return _make_token_response(user)
 
 
 @router.post("/api/auth/register")
 def bridge_register(payload: RegisterIn, db: Session = Depends(get_db)):
-    identifier = (payload.email or payload.phone or "").lower().strip()
+    """
+    Self-registration for farmers/buyers (dev convenience + production path).
+    ADMIN and SUPER_ADMIN roles are silently rejected; use DB seeding.
+    """
     role_map = {
         "FARMER": UserRole.FARMER, "farmer": UserRole.FARMER,
         "BUYER": UserRole.BUYER, "buyer": UserRole.BUYER,
         "LOGISTICS": UserRole.DRIVER, "logistics": UserRole.DRIVER,
         "DRIVER": UserRole.DRIVER, "driver": UserRole.DRIVER,
+        "HUB_STAFF": UserRole.HUB_STAFF, "hub_staff": UserRole.HUB_STAFF,
     }
+
+    # Strip protected roles — silently downgrade to FARMER
+    if payload.role in _PROTECTED_ROLES:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={"error": {"code": "ROLE_NOT_ASSIGNABLE",
+                              "message": "ADMIN and SUPER_ADMIN roles cannot be self-assigned."}}
+        )
+
     role = role_map.get(payload.role, UserRole.FARMER)
-    user = User(phone=identifier or "+910000000001", name=payload.name, role=role)
+    identifier = (payload.email or payload.phone or "").lower().strip()
+
+    # Deduplicate
+    if identifier:
+        existing = db.query(User).filter(User.phone == identifier).first()
+        if existing:
+            return _make_token_response(existing)
+
+    user = User(
+        phone=identifier or f"+91demo{uuid.uuid4().hex[:8]}",
+        name=payload.name,
+        role=role,
+    )
     db.add(user)
     db.commit()
     db.refresh(user)
+
     if role == UserRole.FARMER:
-        db.add(Farmer(user_id=user.id, village="", district="", approved=False))
+        db.add(Farmer(user_id=user.id, default_min_kg=settings.DEFAULT_FARMER_THRESHOLD_KG))
     elif role == UserRole.BUYER:
-        db.add(Buyer(user_id=user.id, business_name=payload.name, approved=False))
+        db.add(Buyer(user_id=user.id, business_name=payload.name))
     db.commit()
+
     return _make_token_response(user)
 
 

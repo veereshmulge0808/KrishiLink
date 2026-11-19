@@ -41,6 +41,8 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
         "http://localhost:8000",
         "http://127.0.0.1:8000",
     ]
@@ -49,6 +51,11 @@ class Settings(BaseSettings):
     MOCK_OTP: bool = True
     MOCK_OTP_CODE: str = "123456"
     OTP_EXPIRY_SECONDS: int = 300
+    OTP_MAX_ATTEMPTS: int = 5          # per request_id before lockout
+    OTP_RATE_LIMIT_WINDOW_S: int = 60  # cooldown window in seconds
+
+    # Demo login (ONLY respected when ENVIRONMENT=development AND DEMO_LOGIN_ENABLED=true)
+    DEMO_LOGIN_ENABLED: bool = True
 
     # Business rules defaults
     DEFAULT_FARMER_THRESHOLD_KG: float = 20.0
@@ -64,5 +71,25 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
+    @property
+    def is_development(self) -> bool:
+        return self.ENVIRONMENT.lower() in ("development", "dev", "local")
+
+    @property
+    def demo_login_allowed(self) -> bool:
+        """Demo login is ONLY allowed in development mode and when explicitly enabled."""
+        return self.is_development and self.DEMO_LOGIN_ENABLED
+
+    @property
+    def using_insecure_secret(self) -> bool:
+        return self.SECRET_KEY.startswith("development-insecure")
+
 
 settings = Settings()
+
+# Hard-fail in production if still using insecure default secret
+if not settings.is_development and settings.using_insecure_secret:
+    raise RuntimeError(
+        "FATAL: SECRET_KEY is set to the insecure development default. "
+        "Set a strong random SECRET_KEY before deploying to production."
+    )
