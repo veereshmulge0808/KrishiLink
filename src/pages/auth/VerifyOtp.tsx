@@ -5,6 +5,7 @@ import { OtpInput } from '../../components/forms/OtpInput';
 import { Button } from '../../components/ui/button';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Logo } from '../../components/common/Logo';
 
 export const VerifyOtp: React.FC = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export const VerifyOtp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-between p-4 sm:p-6 max-w-md mx-auto">
-      <div>
+      <div className="flex items-center justify-between">
         <button
           onClick={() => navigate('/auth/login')}
           className="p-2 -ml-2 rounded-xl text-slate-500 hover:text-slate-900 flex items-center gap-1.5 text-xs font-bold"
@@ -50,6 +51,7 @@ export const VerifyOtp: React.FC = () => {
           <ArrowLeft className="h-4 w-4" />
           <span>{isKn ? 'ಹಿಂದಕ್ಕೆ' : 'Change Phone'}</span>
         </button>
+        <Logo size="xs" showText={false} />
       </div>
 
       <div className="my-auto text-center py-8">

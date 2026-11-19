@@ -11,7 +11,7 @@ import { CropIcon } from '../../components/crop/CropIcon';
 import { KgInput } from '../../components/forms/KgInput';
 import { Button } from '../../components/ui/button';
 import { Sheet, SheetHeader, SheetTitle, SheetDescription } from '../../components/ui/sheet';
-import { Mic, Clock, CheckCircle2, AlertTriangle, Trash2, Sparkles, Plus } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, Trash2, Clock, Truck, Plus, ChevronRight } from 'lucide-react';
 import { formatPriceRange } from '../../lib/format';
 import { useTranslation } from 'react-i18next';
 import { CardSkeleton } from '../../components/common/Skeletons';
@@ -28,71 +28,50 @@ export const FarmerToday: React.FC = () => {
 
   // Bottom sheet state for entering kg
   const [selectedCrop, setSelectedCrop] = useState<Crop | null>(null);
-  const [kgValue, setKgValue] = useState<number>(100);
-  const [readyByTime, setReadyByTime] = useState<string>('05:30 AM');
+  const [kgValue, setKgValue] = useState<number>(50);
+  const [readyByTime, setReadyByTime] = useState<string>('06:00 AM');
+  const [isCustomTime, setIsCustomTime] = useState(false);
+  const [customTimeInput, setCustomTimeInput] = useState('06:15 AM');
 
   // Confirmation view state
   const [confirmationListing, setConfirmationListing] = useState<FarmerListing | null>(null);
 
-  // Mock voice input state
-  const [isListeningVoice, setIsListeningVoice] = useState(false);
-
-  const readyTimes = ['05:00 AM', '05:30 AM', '06:00 AM', '06:30 AM'];
+  const readyTimes = ['05:00 AM', '05:30 AM', '06:00 AM', '06:30 AM', '07:00 AM'];
 
   const handleOpenCropSheet = (crop: Crop) => {
     setSelectedCrop(crop);
     setKgValue(50);
   };
 
+  const getEffectiveReadyTime = () => {
+    return isCustomTime ? customTimeInput || '06:00 AM' : readyByTime;
+  };
+
+  // Calculate estimated pickup window (approx 30-45 mins after ready time)
+  const calculatePickupWindow = (timeStr: string) => {
+    return {
+      start: '30 mins after ready time',
+      end: '45 mins after ready time',
+      windowText: '06:30 AM – 07:15 AM',
+    };
+  };
+
   const handleSubmitHarvest = async () => {
     if (!selectedCrop) return;
+    const finalReadyTime = getEffectiveReadyTime();
     const res = await createListingMutation.mutateAsync({
       farmer_id: 'u_farmer_1',
       crop_id: selectedCrop.id,
       est_kg: kgValue,
-      ready_by: readyByTime,
+      ready_by: finalReadyTime,
     });
     setSelectedCrop(null);
     setConfirmationListing(res);
   };
 
-  const handleVoiceInputMock = () => {
-    setIsListeningVoice(true);
-    setTimeout(() => {
-      setIsListeningVoice(false);
-      // Auto-fill Tomato 200 kg ready at 06:00 AM
-      const tomato = crops.find((c) => c.id === 'c_tomato') || crops[0];
-      if (tomato) {
-        setSelectedCrop(tomato);
-        setKgValue(200);
-        setReadyByTime('06:00 AM');
-      }
-    }, 1500);
-  };
-
   return (
     <div className="flex flex-col gap-4">
-      {/* Cutoff & Voice Bar */}
-      <div className="flex items-center justify-between p-3.5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs">
-        <div className="flex items-center gap-2 text-amber-900 dark:text-amber-200 font-bold">
-          <Clock className="h-4 w-4 text-amber-600 shrink-0" />
-          <span>{t('farmer.cutoffCountdown')}</span>
-        </div>
-
-        <button
-          onClick={handleVoiceInputMock}
-          className={`px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5 transition-all text-xs ${
-            isListeningVoice
-              ? 'bg-red-600 text-white animate-pulse'
-              : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm'
-          }`}
-        >
-          <Mic className="h-3.5 w-3.5" />
-          <span>{isListeningVoice ? t('farmer.voiceListening') : t('farmer.voicePrompt')}</span>
-        </button>
-      </div>
-
-      {/* Main Title */}
+      {/* Main Title - Clean without voice banner */}
       <div>
         <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
           {t('farmer.todayTitle')}
@@ -132,21 +111,23 @@ export const FarmerToday: React.FC = () => {
         </div>
       )}
 
-      {/* Today's Submitted Harvest List */}
+      {/* Today's declared list */}
       {listings.length > 0 && (
-        <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
-          <h3 className="text-sm font-black text-slate-900 dark:text-white">
-            {t('farmer.mySubmissionsToday')} ({listings.length})
-          </h3>
-          <div className="space-y-2">
+        <div className="mt-4 p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+          <div className="flex items-center justify-between">
+            <h4 className="font-black text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+              {isKn ? 'ಇಂದಿನ ಕಟಾವು ಪಟ್ಟಿ' : "Today's Harvest Submissions"} ({listings.length})
+            </h4>
+            <span className="text-xs text-emerald-600 font-bold">
+              {listings.reduce((sum, l) => sum + l.est_kg, 0)} kg total
+            </span>
+          </div>
+
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
             {listings.map((l) => (
               <div
                 key={l.id}
-                className={`p-3.5 rounded-2xl border flex items-center justify-between ${
-                  l.status === 'ELIGIBLE'
-                    ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-900 dark:bg-emerald-950/20'
-                    : 'border-amber-200 bg-amber-50/50 dark:border-amber-900 dark:bg-amber-950/20'
-                }`}
+                className="py-3 flex items-center justify-between first:pt-0 last:pb-0"
               >
                 <div className="flex items-center gap-3">
                   <CropIcon emoji={l.crop?.image_emoji} size="sm" />
@@ -182,14 +163,14 @@ export const FarmerToday: React.FC = () => {
         </div>
       )}
 
-      {/* Bottom Sheet for Kg Entry */}
+      {/* Bottom Sheet for Kg Entry & Custom Time */}
       <Sheet
         open={!!selectedCrop}
         onOpenChange={(open) => !open && setSelectedCrop(null)}
         side="bottom"
       >
         {selectedCrop && (
-          <div className="space-y-4">
+          <div className="space-y-4 max-h-[85vh] overflow-y-auto pr-1">
             <SheetHeader>
               <div className="flex items-center gap-3">
                 <CropIcon emoji={selectedCrop.image_emoji} size="md" />
@@ -204,19 +185,25 @@ export const FarmerToday: React.FC = () => {
               </div>
             </SheetHeader>
 
-            {/* Ready By Chips */}
-            <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                {t('farmer.readyBy')}
+            {/* Ready By Custom Time Selector */}
+            <div className="space-y-2">
+              <label className="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-emerald-600" />
+                <span>{isKn ? 'ಕಟಾವು ಯಾವಾಗ ಸಿದ್ಧವಾಗಿರುತ್ತದೆ?' : 'Ready By What Time?'}</span>
               </label>
-              <div className="grid grid-cols-4 gap-2">
+
+              {/* Preset buttons */}
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                 {readyTimes.map((tm) => (
                   <button
                     key={tm}
                     type="button"
-                    onClick={() => setReadyByTime(tm)}
+                    onClick={() => {
+                      setReadyByTime(tm);
+                      setIsCustomTime(false);
+                    }}
                     className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all ${
-                      readyByTime === tm
+                      !isCustomTime && readyByTime === tm
                         ? 'border-emerald-600 bg-emerald-600 text-white shadow-sm'
                         : 'border-slate-200 bg-slate-50 text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300'
                     }`}
@@ -224,6 +211,55 @@ export const FarmerToday: React.FC = () => {
                     {tm}
                   </button>
                 ))}
+
+                <button
+                  type="button"
+                  onClick={() => setIsCustomTime(true)}
+                  className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all ${
+                    isCustomTime
+                      ? 'border-emerald-600 bg-emerald-600 text-white shadow-sm'
+                      : 'border-slate-200 bg-slate-50 text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300'
+                  }`}
+                >
+                  {isKn ? 'ಕಸ್ಟಮ್ ಸಮಯ' : 'Custom Time'}
+                </button>
+              </div>
+
+              {/* Custom Time Input if selected */}
+              {isCustomTime && (
+                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800 flex items-center gap-3">
+                  <label className="text-xs font-bold text-slate-700 dark:text-slate-200 shrink-0">
+                    {isKn ? 'ನಿಮ್ಮ ಸಮಯ ನಮೂದಿಸಿ:' : 'Enter Exact Ready Time:'}
+                  </label>
+                  <input
+                    type="text"
+                    value={customTimeInput}
+                    onChange={(e) => setCustomTimeInput(e.target.value)}
+                    placeholder="e.g. 05:45 AM or 06:15 AM"
+                    className="flex-1 rounded-lg border border-slate-300 dark:border-slate-700 p-2 text-xs font-bold text-slate-900 dark:text-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  />
+                </div>
+              )}
+
+              {/* Pickup Arrival Notification Alert Box */}
+              <div className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-start gap-2.5 text-xs">
+                <Truck className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-extrabold text-slate-900 dark:text-white">
+                    {isKn ? 'ವಾಹನ ಸಂಗ್ರಹ ಸಮಯ (Pickup Window Notification)' : 'Scheduled Vehicle Pickup Window'}
+                  </p>
+                  <p className="text-slate-600 dark:text-slate-300 font-medium mt-0.5 leading-snug">
+                    {isKn ? (
+                      <>
+                        ನಿಮ್ಮ ಸಿದ್ಧ ಸಮಯ <strong>{getEffectiveReadyTime()}</strong> ಆದ ನಂತರ, ಮಿನಿ ಹಬ್ ಸಂಗ್ರಹ ವಾಹನವು ಸುಮಾರು <strong>30-45 ನಿಮಿಷಗಳಲ್ಲಿ</strong> ನಿಮ್ಮ ಹೊಲಕ್ಕೆ ಬರುತ್ತದೆ. ವಾಹನ ಹೊರಟಾಗ ಲೈವ್ ಮ್ಯಾಪ್ ಲಿಂಕ್ ಬರುತ್ತದೆ.
+                      </>
+                    ) : (
+                      <>
+                        Based on ready time <strong>{getEffectiveReadyTime()}</strong>, your village collection truck is scheduled to arrive at your farm between <strong>30–45 mins later</strong> to weigh and load produce.
+                      </>
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -246,49 +282,66 @@ export const FarmerToday: React.FC = () => {
 
       {/* Confirmation View (Full Screen Modal) */}
       {confirmationListing && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-slate-900 p-6 flex flex-col justify-between animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 bg-white dark:bg-slate-900 p-6 flex flex-col justify-between animate-in zoom-in-95 duration-200 max-w-md mx-auto">
           <div className="my-auto text-center space-y-4 max-w-sm mx-auto">
             <div
-              className={`inline-flex h-24 w-24 items-center justify-center rounded-full text-5xl shadow-lg mb-2 ${
+              className={`h-20 w-20 rounded-full mx-auto flex items-center justify-center ${
                 confirmationListing.status === 'ELIGIBLE'
-                  ? 'bg-emerald-100 text-emerald-600 dark:bg-emerald-950'
-                  : 'bg-amber-100 text-amber-600 dark:bg-amber-950'
+                  ? 'bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400'
+                  : 'bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400'
               }`}
             >
-              {confirmationListing.status === 'ELIGIBLE' ? '✅' : '⚠️'}
+              {confirmationListing.status === 'ELIGIBLE' ? (
+                <CheckCircle2 className="h-10 w-10 animate-bounce" />
+              ) : (
+                <AlertTriangle className="h-10 w-10" />
+              )}
             </div>
 
             <h2 className="text-2xl font-black text-slate-900 dark:text-white">
               {confirmationListing.status === 'ELIGIBLE'
-                ? t('farmer.eligibleTitle')
-                : t('farmer.ineligibleTitle')}
+                ? t('farmer.submittedEligibleTitle')
+                : t('farmer.submittedIneligibleTitle')}
             </h2>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              {confirmationListing.status === 'ELIGIBLE'
-                ? t('farmer.eligibleDesc')
-                : t('farmer.ineligibleDesc', { threshold: confirmationListing.min_kg_applied })}
-            </p>
-
-            <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 text-xs text-left space-y-1">
-              <p>
-                <strong>{isKn ? 'ಬೆಳೆ' : 'Crop'}:</strong> {confirmationListing.crop?.name_en} ({confirmationListing.crop?.name_kn})
-              </p>
-              <p>
-                <strong>{isKn ? 'ಪ್ರಮಾಣ' : 'Quantity'}:</strong> {confirmationListing.est_kg} kg
-              </p>
-              <p>
-                <strong>{isKn ? 'ಸಿದ್ಧ ಸಮಯ' : 'Ready by'}:</strong> {confirmationListing.ready_by}
-              </p>
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-left space-y-2 text-xs">
+              <div className="flex justify-between font-bold">
+                <span>{isKn ? 'ಬೆಳೆ' : 'Crop'}:</span>
+                <span>
+                  {isKn ? confirmationListing.crop?.name_kn : confirmationListing.crop?.name_en}
+                </span>
+              </div>
+              <div className="flex justify-between font-bold">
+                <span>{isKn ? 'ಸಿದ್ಧವಿರುವ ಪ್ರಮಾಣ' : 'Quantity'}:</span>
+                <span className="text-emerald-600 text-sm">{confirmationListing.est_kg} kg</span>
+              </div>
+              <div className="flex justify-between font-bold">
+                <span>{isKn ? 'ಸಿದ್ಧ ಸಮಯ' : 'Ready by'}:</span>
+                <span>{confirmationListing.ready_by}</span>
+              </div>
+              <div className="flex justify-between font-bold">
+                <span>{isKn ? 'ವಾಹನ ಆಗಮನ' : 'Pickup Window'}:</span>
+                <span className="text-emerald-600">30-45 mins post ready</span>
+              </div>
             </div>
+
+            <p className="text-xs text-slate-500">
+              {confirmationListing.status === 'ELIGIBLE'
+                ? isKn
+                  ? 'ನಿಮ್ಮ ಕಟಾವು ಪ್ರಮಾಣವು ವಾಹನ ಕಳುಹಿಸಲು ಸೂಕ್ತವಾಗಿದೆ. ನಾಳೆ ಬೆಳಿಗ್ಗೆ ವಾಹನ ಬರಲಿದೆ.'
+                  : 'Eligible for vehicle pickup! Dispatch will schedule collection.'
+                : isKn
+                  ? 'ಗಮನಿಸಿ: ನಿಮ್ಮ ಕನಿಷ್ಠ ಮಿತಿ 30 ಕೆಜಿಗಿಂತ ಕಡಿಮೆಯಿದೆ. ಒಟ್ಟುಗೂಡಿಸುವಿಕೆ ಅಥವಾ ಮಿತಿ ತಲುಪಿದಾಗ ವಾಹನ ನಿಗದಿಯಾಗುತ್ತದೆ.'
+                  : 'Below minimum threshold. Vehicle will be sent if route consolidates nearby farms.'}
+            </p>
           </div>
 
           <Button
-            onClick={() => setConfirmationListing(null)}
             size="xl"
-            className="w-full font-bold shadow-lg"
+            onClick={() => setConfirmationListing(null)}
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-base shadow-lg"
           >
-            {isKn ? 'ಸರಿ (ಮುಗಿಸಿ)' : 'Done'}
+            {isKn ? 'ಮುಕ್ತಾಯ (Done)' : 'Done'}
           </Button>
         </div>
       )}

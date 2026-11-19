@@ -8,6 +8,7 @@ import { APP_NAME, APP_TAGLINE, APP_NAME_KN } from '../../lib/constants';
 import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitch } from '../../components/common/LanguageSwitch';
+import { Logo } from '../../components/common/Logo';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -31,21 +32,18 @@ export const Login: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-b from-emerald-50/60 via-white to-slate-50 dark:from-slate-950 dark:to-slate-900 flex flex-col justify-between p-4 sm:p-6 max-w-md mx-auto">
       {/* Top Bar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-3xl">🌾</span>
-          <span className="font-black text-xl text-slate-900 dark:text-white">
-            {isKn ? APP_NAME_KN : APP_NAME}
-          </span>
-        </div>
+        <Logo size="sm" showSubtitle={false} />
         <LanguageSwitch />
       </div>
 
       {/* Login Card */}
       <div className="my-auto py-8">
-        <div className="text-center mb-8">
-          <div className="inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-primary-50 text-3xl shadow-inner mb-4">
-            🍅
-          </div>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <img
+            src="/logo.png"
+            alt="KrishiLink"
+            className="h-28 w-auto object-contain mb-3 drop-shadow-md"
+          />
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             {isKn ? 'ಕೃಷಿಲಿಂಕ್‌ಗೆ ಸುಸ್ವಾಗತ' : 'Welcome to KrishiLink'}
           </h2>

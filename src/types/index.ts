@@ -71,11 +71,13 @@ export interface User {
 }
 
 export interface FarmerProfile {
+  id?: string;
   user_id: string;
   village: string;
   taluk: string;
   district: string;
-  location: LatLng;
+  address?: string;
+  location?: LatLng;
   nearest_hub_id: string;
   land_acres?: number;
   default_min_kg: number;
@@ -166,6 +168,7 @@ export interface OrderItem {
   crop_id: string;
   qty_kg: number;
   confirmed_kg?: number;
+  price_per_kg?: number; // paise
   price_per_kg_locked?: number; // paise
   note?: 'FULL' | 'PARTIAL' | 'OUT_OF_STOCK';
   substitute_suggestions?: string[]; // crop_ids

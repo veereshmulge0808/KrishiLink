@@ -29,12 +29,14 @@ import { FarmerToday } from '../pages/farmer/FarmerToday';
 import { FarmerThreshold } from '../pages/farmer/FarmerThreshold';
 import { FarmerPickup } from '../pages/farmer/FarmerPickup';
 import { FarmerPayments } from '../pages/farmer/FarmerPayments';
+import { FarmerProfile } from '../pages/farmer/FarmerProfile';
 
 // Driver Pages
 import { DriverTrips } from '../pages/driver/DriverTrips';
 import { DriverTrip } from '../pages/driver/DriverTrip';
 import { DriverStop } from '../pages/driver/DriverStop';
 import { DriverHistory } from '../pages/driver/DriverHistory';
+import { DriverProfile } from '../pages/driver/DriverProfile';
 
 // Lazy Loaded Admin Pages for Mobile Optimization
 const ControlTower = lazy(() => import('../pages/admin/ControlTower').then(m => ({ default: m.ControlTower })));
@@ -112,6 +114,7 @@ export const router = createBrowserRouter([
       { path: 'threshold', element: <FarmerThreshold /> },
       { path: 'pickup', element: <FarmerPickup /> },
       { path: 'payments', element: <FarmerPayments /> },
+      { path: 'profile', element: <FarmerProfile /> },
     ],
   },
 
@@ -128,6 +131,7 @@ export const router = createBrowserRouter([
       { path: 'trip/:id', element: <DriverTrip /> },
       { path: 'trip/:id/stop/:stopId', element: <DriverStop /> },
       { path: 'history', element: <DriverHistory /> },
+      { path: 'profile', element: <DriverProfile /> },
     ],
   },
 

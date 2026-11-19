@@ -42,6 +42,59 @@ function ChangeMapView({ center, zoom }: { center: [number, number]; zoom?: numb
   return null;
 }
 
+// Custom on-map Zoom Controls (Zoom In +, Zoom Out −, Reset ⛶)
+function CustomZoomControls({ initialCenter, initialZoom }: { initialCenter: [number, number]; initialZoom: number }) {
+  const map = useMap();
+
+  return (
+    <div
+      className="leaflet-top leaflet-right !mt-14 sm:!mt-3 !mr-3"
+      style={{ pointerEvents: 'auto', zIndex: 1000 }}
+    >
+      <div className="flex flex-col gap-1 shadow-xl bg-white/95 dark:bg-slate-900/95 p-1 rounded-2xl border border-slate-200/90 dark:border-slate-700 backdrop-blur-md">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            map.zoomIn();
+          }}
+          className="h-8 w-8 rounded-xl flex items-center justify-center font-black text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-90 transition-all text-lg select-none"
+          title="Zoom In (+)"
+          aria-label="Zoom In"
+        >
+          +
+        </button>
+        <div className="h-px bg-slate-200 dark:bg-slate-700 mx-1" />
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            map.zoomOut();
+          }}
+          className="h-8 w-8 rounded-xl flex items-center justify-center font-black text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-90 transition-all text-lg select-none"
+          title="Zoom Out (−)"
+          aria-label="Zoom Out"
+        >
+          −
+        </button>
+        <div className="h-px bg-slate-200 dark:bg-slate-700 mx-1" />
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            map.setView(initialCenter, initialZoom);
+          }}
+          className="h-8 w-8 rounded-xl flex items-center justify-center font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-90 transition-all text-xs select-none"
+          title="Reset Zoom & Center (⛶)"
+          aria-label="Reset View"
+        >
+          ⛶
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export interface MapStop {
   id: string;
   seq?: number;
@@ -103,7 +156,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
   return (
     <div className={`relative ${className} border border-slate-200 dark:border-slate-800 shadow-inner`}>
       {showLayerControls && (
-        <div className="absolute top-3 right-3 z-[1000] flex flex-wrap gap-1 bg-white/90 p-1.5 rounded-xl shadow-md backdrop-blur-sm text-xs font-medium dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700">
+        <div className="absolute top-3 left-3 z-[1000] flex flex-wrap gap-1 bg-white/90 p-1.5 rounded-xl shadow-md backdrop-blur-sm text-xs font-medium dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700">
           <button
             onClick={() => setLayers((l) => ({ ...l, vehicles: !l.vehicles }))}
             className={`px-2 py-1 rounded-lg ${layers.vehicles ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}`}
@@ -128,10 +181,12 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       <MapContainer
         center={activeCenter}
         zoom={zoom}
+        zoomControl={false}
         scrollWheelZoom={false}
         className="h-full w-full z-0"
       >
         <ChangeMapView center={activeCenter} />
+        <CustomZoomControls initialCenter={activeCenter} initialZoom={zoom} />
 
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

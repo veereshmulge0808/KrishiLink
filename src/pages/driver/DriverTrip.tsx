@@ -54,12 +54,12 @@ export const DriverTrip: React.FC = () => {
   const currentVehicleLoc = liveLocation || trip.current_location || trip.stops[0].location;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] relative bg-slate-950">
+    <div className="flex flex-col h-[calc(100vh-64px)] relative bg-slate-100">
       {/* Floating Top Controls */}
       <div className="absolute top-3 left-3 right-3 z-20 flex items-center justify-between pointer-events-none">
         <button
           onClick={() => navigate('/driver')}
-          className="pointer-events-auto p-2.5 rounded-2xl bg-black/80 backdrop-blur-md text-white border border-slate-700 shadow-xl active:scale-95 flex items-center gap-1.5 text-xs font-bold"
+          className="pointer-events-auto p-2.5 rounded-2xl bg-white/95 backdrop-blur-md text-slate-800 border border-slate-200 shadow-lg active:scale-95 flex items-center gap-1.5 text-xs font-bold"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Exit Map</span>
@@ -68,10 +68,10 @@ export const DriverTrip: React.FC = () => {
         <div className="flex items-center gap-2 pointer-events-auto">
           <button
             onClick={() => setFollowMode(!followMode)}
-            className={`p-2.5 rounded-2xl border text-xs font-black shadow-xl flex items-center gap-1.5 transition-all ${
+            className={`p-2.5 rounded-2xl border text-xs font-black shadow-lg flex items-center gap-1.5 transition-all ${
               followMode
-                ? 'bg-blue-600 border-blue-500 text-white'
-                : 'bg-black/80 border-slate-700 text-slate-300'
+                ? 'bg-blue-600 border-blue-600 text-white'
+                : 'bg-white/95 border-slate-200 text-slate-700'
             }`}
           >
             <Compass className="h-4 w-4" />
@@ -80,7 +80,7 @@ export const DriverTrip: React.FC = () => {
 
           <button
             onClick={() => setShowAllStops(!showAllStops)}
-            className="p-2.5 rounded-2xl bg-black/80 backdrop-blur-md border border-slate-700 text-white shadow-xl active:scale-95 flex items-center gap-1.5 text-xs font-bold"
+            className="p-2.5 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 shadow-lg active:scale-95 flex items-center gap-1.5 text-xs font-bold"
           >
             <List className="h-4 w-4" />
             <span>Stops ({trip.stops.length})</span>
@@ -120,7 +120,7 @@ export const DriverTrip: React.FC = () => {
       </div>
 
       {/* Bottom Sheet Card with Active Stop & Big Status Actions */}
-      <div className="z-20 bg-slate-900 border-t border-slate-800 p-4 rounded-t-3xl shadow-2xl space-y-3">
+      <div className="z-20 bg-white border-t border-slate-200 p-4 rounded-t-3xl shadow-2xl space-y-3">
         {/* Next Stop Details Card */}
         {activeStop && (
           <StopCard
