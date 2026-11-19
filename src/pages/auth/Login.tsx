@@ -21,6 +21,10 @@ import {
   FileText,
   BadgeCheck,
   Warehouse,
+  Eye,
+  EyeOff,
+  Lock,
+  Key,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitch } from '../../components/common/LanguageSwitch';
@@ -41,9 +45,61 @@ export const Login: React.FC = () => {
   const [authMode, setAuthMode] = useState<'login' | 'register'>(initialMode);
   const [selectedRole, setSelectedRole] = useState<Role>(initialRole);
 
-  // Sign In state
-  const [phone, setPhone] = useState('9876543201');
+  // Sign In Role Selector & Credentials
+  const [loginRole, setLoginRole] = useState<Role>(initialRole);
+  const DEMO_PHONE_MAP: Record<Role, string> = {
+    buyer: '9876543201',
+    farmer: '9876543202',
+    driver: '9876543203',
+    admin: '9876543204',
+    hub_staff: '9876543205',
+  };
+
+  const [phone, setPhone] = useState(DEMO_PHONE_MAP[initialRole] || '9876543201');
+  const [password, setPassword] = useState('123456');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loginSuccessMessage, setLoginSuccessMessage] = useState<string | null>(null);
+
+  const handleSelectLoginRole = (role: Role) => {
+    setLoginRole(role);
+    setPhone(DEMO_PHONE_MAP[role] || '9876543201');
+    setPassword('123456');
+  };
+
+  // Direct Phone & Password Sign In
+  const handlePasswordLoginSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (phone.length < 10) return;
+    setLoading(true);
+
+    const cleanPhone = phone.replace(/\D/g, '');
+    const matchedUser =
+      mockDb.users.find((u) => u.phone.includes(cleanPhone)) || DEMO_USERS[loginRole];
+
+    setUser(matchedUser);
+    setRole(loginRole);
+    localStorage.setItem('krishilink_token', `mock_jwt_token_${loginRole}_${Date.now()}`);
+
+    setLoginSuccessMessage(
+      isKn
+        ? `${matchedUser.name} ಅವರಾಗಿ ಲಾಗಿನ್ ಆಗುತ್ತಿದ್ದೀರಿ...`
+        : `Signed in as ${matchedUser.name} (${loginRole.toUpperCase()})`
+    );
+
+    setTimeout(() => {
+      setLoading(false);
+      const destination =
+        {
+          buyer: '/buyer',
+          farmer: '/farmer',
+          driver: '/driver',
+          admin: '/admin',
+          hub_staff: '/admin',
+        }[loginRole] || '/buyer';
+      navigate(destination);
+    }, 600);
+  };
 
   // Register Form States
   // Common
@@ -212,6 +268,13 @@ export const Login: React.FC = () => {
 
           {/* Right Form Pane (Mobile & PC) */}
           <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+            {loginSuccessMessage && (
+              <div className="mb-4 p-4 rounded-2xl bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 shadow-lg animate-in slide-in-from-top">
+                <CheckCircle2 className="h-5 w-5 shrink-0" />
+                <span>{loginSuccessMessage}</span>
+              </div>
+            )}
+
             {registerSuccess && (
               <div className="mb-4 p-4 rounded-2xl bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 shadow-lg animate-in slide-in-from-top">
                 <CheckCircle2 className="h-5 w-5 shrink-0" />
@@ -246,41 +309,124 @@ export const Login: React.FC = () => {
                 </button>
               </div>
 
-              {/* 1. SIGN IN MODE */}
+              {/* 1. SIGN IN MODE WITH ROLE SELECTOR, PHONE NUMBER & PASSWORD */}
               {authMode === 'login' ? (
-                <div className="space-y-5">
+                <div className="space-y-4">
                   <div className="text-center sm:text-left">
                     <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                       {isKn ? 'ಕೃಷಿಲಿಂಕ್‌ಗೆ ಮರಳಿ ಸ್ವಾಗತ' : 'Welcome back to KrishiLink'}
                     </h3>
                     <p className="text-xs text-slate-500 mt-1">
                       {isKn
-                        ? 'ನಿಮ್ಮ ನೋಂದಾಯಿತ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ ಲಾಗಿನ್ ಆಗಿ'
-                        : 'Sign in to access your farm harvest, bulk orders, or fleet trips'}
+                        ? 'ಲಾಗಿನ್ ಮಾಡಲು ನಿಮ್ಮ ಪಾತ್ರ, ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ'
+                        : 'Select your role and sign in with phone number & password'}
                     </p>
                   </div>
 
-                  <form onSubmit={handleLoginSubmit} className="space-y-4">
+                  {/* Login As: 4 Role Selector Tabs */}
+                  <div>
+                    <label className="text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2">
+                      {isKn ? 'ಲಾಗಿನ್ ಪಾತ್ರ ಆಯ್ಕೆಮಾಡಿ (Login As)' : 'Login As (Select Role):'}
+                    </label>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {[
+                        { id: 'buyer', label: 'Buyer', sub: 'Restaurant / Mess', icon: <ShoppingBag className="h-4 w-4" /> },
+                        { id: 'farmer', label: 'Farmer', sub: 'ರೈತರು', icon: <Sprout className="h-4 w-4" /> },
+                        { id: 'driver', label: 'Driver', sub: 'Fleet Pilot', icon: <Truck className="h-4 w-4" /> },
+                        { id: 'admin', label: 'Admin', sub: 'Ops Tower', icon: <Shield className="h-4 w-4" /> },
+                      ].map((r) => (
+                        <button
+                          key={r.id}
+                          type="button"
+                          onClick={() => handleSelectLoginRole(r.id as Role)}
+                          className={`p-2.5 rounded-2xl border text-center transition-all flex flex-col items-center justify-center ${
+                            loginRole === r.id
+                              ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 ring-2 ring-emerald-500/30 font-black shadow-sm'
+                              : 'border-slate-200 hover:bg-slate-50 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold'
+                          }`}
+                        >
+                          <div className={`mb-1 ${loginRole === r.id ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500'}`}>
+                            {r.icon}
+                          </div>
+                          <span className="text-xs">{r.label}</span>
+                          <span className="text-[10px] text-slate-400 font-medium">{r.sub}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <form onSubmit={handlePasswordLoginSubmit} className="space-y-3.5 pt-1">
+                    {/* Mobile Phone Number */}
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">
-                        {isKn ? 'ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ' : 'Mobile Phone Number'}
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-1.5">
+                        {isKn ? 'ಮೊಬೈಲ್ ಸಂಖ್ಯೆ (Phone Number)' : 'Mobile Phone Number'}
                       </label>
                       <PhoneInput value={phone} onChange={setPhone} />
+                    </div>
+
+                    {/* Password Field with Show/Hide Toggle */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                          {isKn ? 'ಪಾಸ್‌ವರ್ಡ್ (Password)' : 'Password'}
+                        </label>
+                        <span className="text-[11px] font-semibold text-emerald-600 hover:underline cursor-pointer" onClick={() => alert('Demo password is: 123456')}>
+                          {isKn ? 'ಪಾಸ್‌ವರ್ಡ್ ನೆನಪಿಲ್ಲವೇ?' : 'Forgot password?'}
+                        </span>
+                      </div>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                          <Lock className="h-4 w-4" />
+                        </div>
+                        <input
+                          type={showPassword ? 'text' : 'password'}
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="Enter your password"
+                          className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 pl-9 pr-10 py-3 text-sm font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                        >
+                          {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </button>
+                      </div>
                       <p className="text-[11px] text-slate-400 mt-1.5 flex items-center gap-1">
-                        <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-                        <span>Mock OTP: <strong>123456</strong> is auto-verified in prototype</span>
+                        <Key className="h-3 w-3 text-amber-500" />
+                        <span>Demo prototype: default password is <strong>123456</strong></span>
                       </p>
                     </div>
 
+                    {/* Direct Sign In Button */}
                     <Button
                       type="submit"
                       disabled={loading || phone.length < 10}
                       size="xl"
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-base shadow-lg flex items-center justify-center gap-2"
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm sm:text-base py-3.5 shadow-lg flex items-center justify-center gap-2 rounded-2xl transition-all"
                     >
-                      <span>{loading ? 'Sending OTP...' : isKn ? 'ಮುಂದುವರಿಯಿರಿ' : 'Get OTP & Sign In'}</span>
+                      <span>
+                        {loading
+                          ? 'Signing in...'
+                          : isKn
+                          ? `${loginRole.toUpperCase()} ಆಗಿ ಲಾಗಿನ್ ಆಗಿ →`
+                          : `Sign In as ${loginRole.toUpperCase()} →`}
+                      </span>
                       <ArrowRight className="h-4 w-4" />
                     </Button>
+
+                    {/* Alternative SMS OTP Link */}
+                    <div className="pt-2 text-center">
+                      <button
+                        type="button"
+                        onClick={handleLoginSubmit}
+                        className="text-xs font-bold text-slate-500 hover:text-emerald-600 underline underline-offset-4"
+                      >
+                        {isKn ? 'ಅಥವಾ SMS OTP ಮೂಲಕ ಲಾಗಿನ್ ಆಗಿ' : 'Or sign in using SMS OTP →'}
+                      </button>
+                    </div>
                   </form>
                 </div>
               ) : (
