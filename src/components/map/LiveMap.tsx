@@ -3,9 +3,27 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-
 import L from 'leaflet';
 import { LatLng, StopType, Hub } from '../../types';
 import { BENGALURU_COORDS } from '../../lib/constants';
+import type { OptimizedRoute } from '../../features/pricing/hooks';
 
-// Fix Leaflet's missing default icon paths in bundled environments
-const defaultMarkerSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" viewBox="0 0 24 24" fill="%2316A34A" stroke="%23ffffff" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5" fill="%23ffffff"/></svg>`;
+import type { SimulatedVehicleState } from '../../hooks/useRouteSimulation';
+
+interface LiveMapProps {
+  center?: LatLng;
+  zoom?: number;
+  vehicles?: MapVehicle[];
+  stops?: MapStop[];
+  hubs?: Hub[];
+  routePolyline?: LatLng[];
+  optimizedRoutes?: OptimizedRoute[];
+  simulatedVehicles?: SimulatedVehicleState[];
+  selectedVehicleId?: string | null;
+  highlightId?: string;
+  className?: string;
+  followVehicle?: boolean;
+  showLayerControls?: boolean;
+}
+
+const ROUTE_COLORS = ['#16A34A', '#2563EB', '#9333EA', '#EA580C', '#0891B2'];
 
 const createCustomIcon = (color: string, label?: string, isVehicle?: boolean) => {
   if (isVehicle) {
@@ -42,7 +60,6 @@ function ChangeMapView({ center, zoom }: { center: [number, number]; zoom?: numb
   return null;
 }
 
-// Custom on-map Zoom Controls (Zoom In +, Zoom Out −, Reset ⛶)
 function CustomZoomControls({ initialCenter, initialZoom }: { initialCenter: [number, number]; initialZoom: number }) {
   const map = useMap();
 
@@ -116,19 +133,6 @@ export interface MapVehicle {
   trip_id?: string;
 }
 
-interface LiveMapProps {
-  center?: LatLng;
-  zoom?: number;
-  vehicles?: MapVehicle[];
-  stops?: MapStop[];
-  hubs?: Hub[];
-  routePolyline?: LatLng[];
-  highlightId?: string;
-  className?: string;
-  followVehicle?: boolean;
-  showLayerControls?: boolean;
-}
-
 export const LiveMap: React.FC<LiveMapProps> = ({
   center = BENGALURU_COORDS,
   zoom = 11,
@@ -136,6 +140,9 @@ export const LiveMap: React.FC<LiveMapProps> = ({
   stops = [],
   hubs = [],
   routePolyline = [],
+  optimizedRoutes = [],
+  simulatedVehicles = [],
+  selectedVehicleId = null,
   highlightId,
   className = 'h-80 w-full rounded-2xl overflow-hidden',
   followVehicle = false,
@@ -155,6 +162,28 @@ export const LiveMap: React.FC<LiveMapProps> = ({
 
   return (
     <div className={`relative ${className} border border-slate-200 dark:border-slate-800 shadow-inner`}>
+      {showLayerControls && (
+        <div
+          className="leaflet-top leaflet-left !mt-3 !ml-3 flex flex-wrap gap-1.5"
+          style={{ pointerEvents: 'auto', zIndex: 1000 }}
+        >
+          {(['route', 'stops', 'hubs', 'vehicles'] as const).map((key) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setLayers((prev) => ({ ...prev, [key]: !prev[key] }))}
+              className={`px-2.5 py-1 rounded-full text-xs font-semibold border transition ${
+                layers[key]
+                  ? 'bg-emerald-600 text-white border-emerald-700 shadow'
+                  : 'bg-white/90 text-slate-600 border-slate-300'
+              }`}
+            >
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </button>
+          ))}
+        </div>
+      )}
+
       <MapContainer
         center={activeCenter}
         zoom={zoom}
@@ -170,7 +199,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* Route Polyline */}
+        {/* Legacy single routePolyline */}
         {layers.route && routePolyline.length > 1 && (
           <Polyline
             positions={routePolyline.map((p) => [p.lat, p.lng])}
@@ -178,7 +207,105 @@ export const LiveMap: React.FC<LiveMapProps> = ({
           />
         )}
 
-        {/* Stops */}
+        {/* OR-Tools + OSRM multi-vehicle polylines, highlighted corridor & moving trucks */}
+{layers.route &&
+  optimizedRoutes.map((route, rIdx) => {
+    const color = ROUTE_COLORS[rIdx % ROUTE_COLORS.length];
+    const sim = simulatedVehicles?.find((v) => v.vehicle_id === route.vehicle_id);
+    const isSelected = !selectedVehicleId || selectedVehicleId === route.vehicle_id;
+    const opacity = isSelected ? 0.95 : 0.25;
+
+    const fullPositions: [number, number][] = (route.geometry || []).map(
+      ([lon, lat]) => [lat, lon]
+    );
+
+    return (
+      <React.Fragment key={route.vehicle_id}>
+        {/* Outer Highlight Halo for Active/Selected Route */}
+        {isSelected && fullPositions.length > 1 && (
+          <Polyline
+            positions={fullPositions}
+            pathOptions={{ color, weight: 11, opacity: 0.2 }}
+          />
+        )}
+
+        {/* Traveled Road Segment (Muted) vs Remaining Route Ahead (Bold) */}
+        {sim ? (
+          <>
+            {sim.traveled_positions.length > 1 && (
+              <Polyline
+                positions={sim.traveled_positions}
+                pathOptions={{ color: '#94A3B8', weight: 4, opacity: 0.7 }}
+              />
+            )}
+            {sim.remaining_positions.length > 1 && (
+              <Polyline
+                positions={sim.remaining_positions}
+                pathOptions={{ color, weight: 5, opacity }}
+              />
+            )}
+          </>
+        ) : (
+          fullPositions.length > 1 && (
+            <Polyline
+              positions={fullPositions}
+              pathOptions={{ color, weight: 5, opacity }}
+            />
+          )
+        )}
+
+        {/* Numbered Stops along this route */}
+        {layers.stops &&
+          route.stops.map((stop) => {
+            const isNextStop = sim?.next_stop_id === stop.stop_id && !sim.is_finished;
+            return (
+              <Marker
+                key={`${route.vehicle_id}-${stop.stop_id}`}
+                position={[stop.lat, stop.lon]}
+                icon={createCustomIcon(
+                  isNextStop ? '#DC2626' : color,
+                  String(stop.sequence)
+                )}
+              >
+                <Popup>
+                  <div className="p-1 text-xs">
+                    <p className="font-bold text-sm text-slate-900">
+                      #{stop.sequence} {stop.name}
+                    </p>
+                    <p className="text-slate-600">Assigned: {route.vehicle_id}</p>
+                    <p className="text-slate-600">Load: {stop.demand_kg} kg</p>
+                    <p className="text-emerald-700 font-semibold">
+                      ML ETA: {stop.eta} ({stop.window})
+                    </p>
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
+
+        {/* Smooth Road-Snapped Moving Truck Marker */}
+        {layers.vehicles && sim && (
+          <Marker
+            position={[sim.lat, sim.lon]}
+            icon={createCustomIcon(color, undefined, true)}
+          >
+            <Popup>
+              <div className="p-1 text-xs">
+                <p className="font-bold text-blue-700 text-sm">🚚 {sim.vehicle_id}</p>
+                <p>Speed: {sim.speed_kmh} km/h • Progress: {sim.progress_pct}%</p>
+                <p>Next: <strong>{sim.next_stop_name}</strong></p>
+                <p className="font-semibold text-emerald-600">
+                  Remaining: {sim.remaining_km} km ({sim.eta_minutes} min)
+                </p>
+              </div>
+            </Popup>
+          </Marker>
+        )}
+      </React.Fragment>
+    );
+  })}
+
+        {/* Standard Stops */}
         {layers.stops &&
           stops.map((stop) => {
             const isPickup = stop.type === 'PICKUP';

@@ -1,0 +1,35 @@
+{
+  "delivery_date": "2026-11-21",
+  "published_at": "2026-11-20T07:40:44.507416+00:00",
+  "counts": {
+    "price_bands": 55,
+    "demand_forecasts": 50,
+    "demand_curve_points": 35
+  },
+  "meta": {
+    "as_of_date": "2026-11-20",
+    "quality_report": {
+      "market_prices": {
+        "raw_rows": 7300,
+        "dropped_bad_dates": 0,
+        "dropped_future_rows": 0,
+        "dropped_unmapped_or_inactive_crops": 0,
+        "dropped_non_positive_prices": 0,
+        "dropped_duplicates": 0,
+        "clean_rows": 7300,
+        "missing_price_days": 0
+      },
+      "weather": {
+        "clean_rows": 734
+      },
+      "holidays": {
+        "clean_rows": 10
+      },
+      "orders": {
+        "raw_rows": 36500,
+        "dropped_unknown_hub_or_inactive_crop": 0,
+        "clean_rows": 36500
+      }
+    }
+  }
+}

@@ -1,0 +1,282 @@
+[
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "04:00",
+    "q10_kg": 158.12,
+    "q50_kg": 181.26,
+    "q90_kg": 204.16
+  },
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "05:00",
+    "q10_kg": 395.3,
+    "q50_kg": 453.14,
+    "q90_kg": 510.4
+  },
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "06:00",
+    "q10_kg": 711.54,
+    "q50_kg": 815.66,
+    "q90_kg": 918.73
+  },
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "07:00",
+    "q10_kg": 1075.21,
+    "q50_kg": 1232.55,
+    "q90_kg": 1388.3
+  },
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "08:00",
+    "q10_kg": 1359.82,
+    "q50_kg": 1558.81,
+    "q90_kg": 1755.79
+  },
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "09:00",
+    "q10_kg": 1517.94,
+    "q50_kg": 1740.07,
+    "q90_kg": 1959.96
+  },
+  {
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "10:00",
+    "q10_kg": 1581.19,
+    "q50_kg": 1812.57,
+    "q90_kg": 2041.62
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "04:00",
+    "q10_kg": 71.42,
+    "q50_kg": 82.33,
+    "q90_kg": 92.68
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "05:00",
+    "q10_kg": 178.54,
+    "q50_kg": 205.82,
+    "q90_kg": 231.69
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "06:00",
+    "q10_kg": 321.38,
+    "q50_kg": 370.48,
+    "q90_kg": 417.04
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "07:00",
+    "q10_kg": 485.64,
+    "q50_kg": 559.83,
+    "q90_kg": 630.2
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "08:00",
+    "q10_kg": 614.19,
+    "q50_kg": 708.02,
+    "q90_kg": 797.01
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "09:00",
+    "q10_kg": 685.6,
+    "q50_kg": 790.35,
+    "q90_kg": 889.69
+  },
+  {
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "10:00",
+    "q10_kg": 714.17,
+    "q50_kg": 823.28,
+    "q90_kg": 926.76
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "04:00",
+    "q10_kg": 55.23,
+    "q50_kg": 63.15,
+    "q90_kg": 72.27
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "05:00",
+    "q10_kg": 138.07,
+    "q50_kg": 157.88,
+    "q90_kg": 180.68
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "06:00",
+    "q10_kg": 248.53,
+    "q50_kg": 284.19,
+    "q90_kg": 325.22
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "07:00",
+    "q10_kg": 375.56,
+    "q50_kg": 429.44,
+    "q90_kg": 491.45
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "08:00",
+    "q10_kg": 474.97,
+    "q50_kg": 543.12,
+    "q90_kg": 621.54
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "09:00",
+    "q10_kg": 530.2,
+    "q50_kg": 606.27,
+    "q90_kg": 693.81
+  },
+  {
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "10:00",
+    "q10_kg": 552.29,
+    "q50_kg": 631.53,
+    "q90_kg": 722.72
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "04:00",
+    "q10_kg": 39.23,
+    "q50_kg": 45.51,
+    "q90_kg": 51.43
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "05:00",
+    "q10_kg": 98.07,
+    "q50_kg": 113.78,
+    "q90_kg": 128.58
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "06:00",
+    "q10_kg": 176.53,
+    "q50_kg": 204.8,
+    "q90_kg": 231.44
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "07:00",
+    "q10_kg": 266.75,
+    "q50_kg": 309.47,
+    "q90_kg": 349.73
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "08:00",
+    "q10_kg": 337.36,
+    "q50_kg": 391.39,
+    "q90_kg": 442.31
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "09:00",
+    "q10_kg": 376.59,
+    "q50_kg": 436.9,
+    "q90_kg": 493.74
+  },
+  {
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "10:00",
+    "q10_kg": 392.28,
+    "q50_kg": 455.1,
+    "q90_kg": 514.31
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "04:00",
+    "q10_kg": 31.24,
+    "q50_kg": 36.48,
+    "q90_kg": 41.49
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "05:00",
+    "q10_kg": 78.09,
+    "q50_kg": 91.21,
+    "q90_kg": 103.73
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "06:00",
+    "q10_kg": 140.56,
+    "q50_kg": 164.17,
+    "q90_kg": 186.72
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "07:00",
+    "q10_kg": 212.4,
+    "q50_kg": 248.08,
+    "q90_kg": 282.15
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "08:00",
+    "q10_kg": 268.63,
+    "q50_kg": 313.75,
+    "q90_kg": 356.84
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "09:00",
+    "q10_kg": 299.87,
+    "q50_kg": 350.24,
+    "q90_kg": 398.33
+  },
+  {
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "hour_ist": "10:00",
+    "q10_kg": 312.36,
+    "q50_kg": 364.83,
+    "q90_kg": 414.93
+  }
+]

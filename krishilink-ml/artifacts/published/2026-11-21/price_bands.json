@@ -1,0 +1,2807 @@
+[
+  {
+    "crop_id": "tomato",
+    "crop_name_en": "Tomato",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 20.0,
+    "p50": 21.5,
+    "p90": 23.9,
+    "published_low": 20,
+    "published_high": 24,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 24.01
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 24.33
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 23.23
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 24.08
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 22.57
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 21.56
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 21.5
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato_organic",
+    "crop_name_en": "Tomato (Organic)",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca (\u0cb8\u0cbe\u0cb5\u0caf\u0cb5)",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 27.0,
+    "p50": 29.02,
+    "p90": 32.26,
+    "published_low": 27,
+    "published_high": 32,
+    "coverage_pct": 83.3,
+    "pricing_mode": "derived_premium",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 32.41
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 32.84
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 31.37
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 32.51
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 30.47
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.11
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.02
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "onion",
+    "crop_name_en": "Onion",
+    "crop_name_kn": "\u0c88\u0cb0\u0cc1\u0cb3\u0ccd\u0cb3\u0cbf",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 29.74,
+    "p50": 31.99,
+    "p90": 34.1,
+    "published_low": 30,
+    "published_high": 34,
+    "coverage_pct": 93.5,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 28.96
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.4
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.73
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 30.49
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 32.16
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 32.61
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 31.99
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "potato",
+    "crop_name_en": "Potato",
+    "crop_name_kn": "\u0c86\u0cb2\u0cc2\u0c97\u0ca1\u0ccd\u0ca1\u0cc6",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 19.85,
+    "p50": 21.69,
+    "p90": 23.76,
+    "published_low": 20,
+    "published_high": 24,
+    "coverage_pct": 86.1,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 23.82
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 23.52
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 24.25
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 24.35
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 23.13
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 21.36
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 21.69
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "carrot",
+    "crop_name_en": "Carrot",
+    "crop_name_kn": "\u0c97\u0c9c\u0ccd\u0c9c\u0cb0\u0cbf",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 33.65,
+    "p50": 36.3,
+    "p90": 37.59,
+    "published_low": 34,
+    "published_high": 37,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 30.37
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.47
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 34.83
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 34.8
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 35.56
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 35.51
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 36.3
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "french_beans",
+    "crop_name_en": "French Beans",
+    "crop_name_kn": "\u0cac\u0cc0\u0ca8\u0ccd\u0cb8\u0ccd",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 33.92,
+    "p50": 36.54,
+    "p90": 39.09,
+    "published_low": 34,
+    "published_high": 39,
+    "coverage_pct": 78.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 38.29
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 38.45
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 37.7
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 36.56
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 35.19
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 36.08
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 36.54
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cabbage",
+    "crop_name_en": "Cabbage",
+    "crop_name_kn": "\u0c8e\u0cb2\u0cc6\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 15.94,
+    "p50": 17.3,
+    "p90": 19.24,
+    "published_low": 16,
+    "published_high": 19,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 17.56
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 17.03
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 17.48
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 18.06
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 17.06
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 17.08
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 17.3
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cauliflower",
+    "crop_name_en": "Cauliflower",
+    "crop_name_kn": "\u0cb9\u0cc2\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 26.71,
+    "p50": 29.09,
+    "p90": 31.32,
+    "published_low": 27,
+    "published_high": 31,
+    "coverage_pct": 92.6,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 29.92
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 29.63
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.4
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 29.19
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 30.94
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 28.61
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.09
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "brinjal",
+    "crop_name_en": "Brinjal (Eggplant)",
+    "crop_name_kn": "\u0cac\u0ca6\u0ca8\u0cc6\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 27.61,
+    "p50": 29.92,
+    "p90": 32.17,
+    "published_low": 28,
+    "published_high": 32,
+    "coverage_pct": 90.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 27.27
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.47
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.31
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 28.47
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 29.6
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 30.02
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.92
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "green_chilli",
+    "crop_name_en": "Green Chilli",
+    "crop_name_kn": "\u0cb9\u0cb8\u0cbf\u0cb0\u0cc1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 50.97,
+    "p50": 54.86,
+    "p90": 58.64,
+    "published_low": 51,
+    "published_high": 58,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 52.4
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 53.58
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 52.04
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 50.4
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 53.0
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 56.15
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 54.86
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "capsicum",
+    "crop_name_en": "Capsicum (Bell Pepper)",
+    "crop_name_kn": "\u0ca6\u0cca\u0ca1\u0ccd\u0ca1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_blr_main",
+    "delivery_date": "2026-11-21",
+    "p10": 47.72,
+    "p50": 51.52,
+    "p90": 54.87,
+    "published_low": 48,
+    "published_high": 55,
+    "coverage_pct": 88.0,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 46.23
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 47.26
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 49.56
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 50.31
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 50.74
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 52.71
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 51.52
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato",
+    "crop_name_en": "Tomato",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 20.5,
+    "p50": 22.0,
+    "p90": 24.4,
+    "published_low": 21,
+    "published_high": 24,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 24.51
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 24.83
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 23.73
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 24.58
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 23.07
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 22.06
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 22.0
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato_organic",
+    "crop_name_en": "Tomato (Organic)",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca (\u0cb8\u0cbe\u0cb5\u0caf\u0cb5)",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 27.67,
+    "p50": 29.7,
+    "p90": 32.94,
+    "published_low": 28,
+    "published_high": 33,
+    "coverage_pct": 83.3,
+    "pricing_mode": "derived_premium",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 33.09
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 33.52
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 32.04
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 33.19
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 31.15
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.78
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.7
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "onion",
+    "crop_name_en": "Onion",
+    "crop_name_kn": "\u0c88\u0cb0\u0cc1\u0cb3\u0ccd\u0cb3\u0cbf",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 30.24,
+    "p50": 32.49,
+    "p90": 34.6,
+    "published_low": 30,
+    "published_high": 34,
+    "coverage_pct": 93.5,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 29.46
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.9
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 31.23
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 30.99
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 32.66
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 33.11
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 32.49
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "potato",
+    "crop_name_en": "Potato",
+    "crop_name_kn": "\u0c86\u0cb2\u0cc2\u0c97\u0ca1\u0ccd\u0ca1\u0cc6",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 20.35,
+    "p50": 22.19,
+    "p90": 24.26,
+    "published_low": 20,
+    "published_high": 24,
+    "coverage_pct": 86.1,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 24.32
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 24.02
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 24.75
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 24.85
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 23.63
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 21.86
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 22.19
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "carrot",
+    "crop_name_en": "Carrot",
+    "crop_name_kn": "\u0c97\u0c9c\u0ccd\u0c9c\u0cb0\u0cbf",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 34.15,
+    "p50": 36.8,
+    "p90": 38.09,
+    "published_low": 34,
+    "published_high": 38,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 30.87
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.97
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 35.33
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 35.3
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 36.06
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 36.01
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 36.8
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "french_beans",
+    "crop_name_en": "French Beans",
+    "crop_name_kn": "\u0cac\u0cc0\u0ca8\u0ccd\u0cb8\u0ccd",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 34.42,
+    "p50": 37.04,
+    "p90": 39.59,
+    "published_low": 35,
+    "published_high": 39,
+    "coverage_pct": 78.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 38.79
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 38.95
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 38.2
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 37.06
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 35.69
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 36.58
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 37.04
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cabbage",
+    "crop_name_en": "Cabbage",
+    "crop_name_kn": "\u0c8e\u0cb2\u0cc6\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 16.44,
+    "p50": 17.8,
+    "p90": 19.74,
+    "published_low": 17,
+    "published_high": 20,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 18.06
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 17.53
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 17.98
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 18.56
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 17.56
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 17.58
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 17.8
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cauliflower",
+    "crop_name_en": "Cauliflower",
+    "crop_name_kn": "\u0cb9\u0cc2\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 27.21,
+    "p50": 29.59,
+    "p90": 31.82,
+    "published_low": 27,
+    "published_high": 32,
+    "coverage_pct": 92.6,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 30.42
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.13
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.9
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 29.69
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 31.44
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.11
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.59
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "brinjal",
+    "crop_name_en": "Brinjal (Eggplant)",
+    "crop_name_kn": "\u0cac\u0ca6\u0ca8\u0cc6\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 28.11,
+    "p50": 30.42,
+    "p90": 32.67,
+    "published_low": 28,
+    "published_high": 32,
+    "coverage_pct": 90.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 27.77
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.97
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.81
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 28.97
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 30.1
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 30.52
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 30.42
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "green_chilli",
+    "crop_name_en": "Green Chilli",
+    "crop_name_kn": "\u0cb9\u0cb8\u0cbf\u0cb0\u0cc1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 51.47,
+    "p50": 55.36,
+    "p90": 59.14,
+    "published_low": 52,
+    "published_high": 59,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 52.9
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 54.08
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 52.54
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 50.9
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 53.5
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 56.65
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 55.36
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "capsicum",
+    "crop_name_en": "Capsicum (Bell Pepper)",
+    "crop_name_kn": "\u0ca6\u0cca\u0ca1\u0ccd\u0ca1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_hsr",
+    "delivery_date": "2026-11-21",
+    "p10": 48.22,
+    "p50": 52.02,
+    "p90": 55.37,
+    "published_low": 49,
+    "published_high": 55,
+    "coverage_pct": 88.0,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 46.73
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 47.76
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 50.06
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 50.81
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 51.24
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 53.21
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 52.02
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato",
+    "crop_name_en": "Tomato",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 20.5,
+    "p50": 22.0,
+    "p90": 24.4,
+    "published_low": 21,
+    "published_high": 24,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 24.51
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 24.83
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 23.73
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 24.58
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 23.07
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 22.06
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 22.0
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato_organic",
+    "crop_name_en": "Tomato (Organic)",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca (\u0cb8\u0cbe\u0cb5\u0caf\u0cb5)",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 27.67,
+    "p50": 29.7,
+    "p90": 32.94,
+    "published_low": 28,
+    "published_high": 33,
+    "coverage_pct": 83.3,
+    "pricing_mode": "derived_premium",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 33.09
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 33.52
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 32.04
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 33.19
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 31.15
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.78
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.7
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "onion",
+    "crop_name_en": "Onion",
+    "crop_name_kn": "\u0c88\u0cb0\u0cc1\u0cb3\u0ccd\u0cb3\u0cbf",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 30.24,
+    "p50": 32.49,
+    "p90": 34.6,
+    "published_low": 30,
+    "published_high": 34,
+    "coverage_pct": 93.5,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 29.46
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.9
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 31.23
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 30.99
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 32.66
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 33.11
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 32.49
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "potato",
+    "crop_name_en": "Potato",
+    "crop_name_kn": "\u0c86\u0cb2\u0cc2\u0c97\u0ca1\u0ccd\u0ca1\u0cc6",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 20.35,
+    "p50": 22.19,
+    "p90": 24.26,
+    "published_low": 20,
+    "published_high": 24,
+    "coverage_pct": 86.1,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 24.32
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 24.02
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 24.75
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 24.85
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 23.63
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 21.86
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 22.19
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "carrot",
+    "crop_name_en": "Carrot",
+    "crop_name_kn": "\u0c97\u0c9c\u0ccd\u0c9c\u0cb0\u0cbf",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 34.15,
+    "p50": 36.8,
+    "p90": 38.09,
+    "published_low": 34,
+    "published_high": 38,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 30.87
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.97
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 35.33
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 35.3
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 36.06
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 36.01
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 36.8
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "french_beans",
+    "crop_name_en": "French Beans",
+    "crop_name_kn": "\u0cac\u0cc0\u0ca8\u0ccd\u0cb8\u0ccd",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 34.42,
+    "p50": 37.04,
+    "p90": 39.59,
+    "published_low": 35,
+    "published_high": 39,
+    "coverage_pct": 78.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 38.79
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 38.95
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 38.2
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 37.06
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 35.69
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 36.58
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 37.04
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cabbage",
+    "crop_name_en": "Cabbage",
+    "crop_name_kn": "\u0c8e\u0cb2\u0cc6\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 16.44,
+    "p50": 17.8,
+    "p90": 19.74,
+    "published_low": 17,
+    "published_high": 20,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 18.06
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 17.53
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 17.98
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 18.56
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 17.56
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 17.58
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 17.8
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cauliflower",
+    "crop_name_en": "Cauliflower",
+    "crop_name_kn": "\u0cb9\u0cc2\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 27.21,
+    "p50": 29.59,
+    "p90": 31.82,
+    "published_low": 27,
+    "published_high": 32,
+    "coverage_pct": 92.6,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 30.42
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.13
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.9
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 29.69
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 31.44
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.11
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 29.59
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "brinjal",
+    "crop_name_en": "Brinjal (Eggplant)",
+    "crop_name_kn": "\u0cac\u0ca6\u0ca8\u0cc6\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 28.11,
+    "p50": 30.42,
+    "p90": 32.67,
+    "published_low": 28,
+    "published_high": 32,
+    "coverage_pct": 90.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 27.77
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.97
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.81
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 28.97
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 30.1
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 30.52
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 30.42
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "green_chilli",
+    "crop_name_en": "Green Chilli",
+    "crop_name_kn": "\u0cb9\u0cb8\u0cbf\u0cb0\u0cc1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 51.47,
+    "p50": 55.36,
+    "p90": 59.14,
+    "published_low": 52,
+    "published_high": 59,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 52.9
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 54.08
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 52.54
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 50.9
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 53.5
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 56.65
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 55.36
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "capsicum",
+    "crop_name_en": "Capsicum (Bell Pepper)",
+    "crop_name_kn": "\u0ca6\u0cca\u0ca1\u0ccd\u0ca1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_whitefield",
+    "delivery_date": "2026-11-21",
+    "p10": 48.22,
+    "p50": 52.02,
+    "p90": 55.37,
+    "published_low": 49,
+    "published_high": 55,
+    "coverage_pct": 88.0,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 46.73
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 47.76
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 50.06
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 50.81
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 51.24
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 53.21
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 52.02
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato",
+    "crop_name_en": "Tomato",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 19.0,
+    "p50": 20.5,
+    "p90": 22.9,
+    "published_low": 19,
+    "published_high": 23,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 23.01
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 23.33
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 22.23
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 23.08
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 21.57
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 20.56
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 20.5
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato_organic",
+    "crop_name_en": "Tomato (Organic)",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca (\u0cb8\u0cbe\u0cb5\u0caf\u0cb5)",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 25.65,
+    "p50": 27.67,
+    "p90": 30.91,
+    "published_low": 26,
+    "published_high": 31,
+    "coverage_pct": 83.3,
+    "pricing_mode": "derived_premium",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 31.06
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.49
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.02
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 31.16
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 29.12
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 27.76
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 27.67
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "onion",
+    "crop_name_en": "Onion",
+    "crop_name_kn": "\u0c88\u0cb0\u0cc1\u0cb3\u0ccd\u0cb3\u0cbf",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 28.74,
+    "p50": 30.99,
+    "p90": 33.1,
+    "published_low": 29,
+    "published_high": 33,
+    "coverage_pct": 93.5,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 27.96
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.4
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 29.73
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 29.49
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 31.16
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 31.61
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 30.99
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "potato",
+    "crop_name_en": "Potato",
+    "crop_name_kn": "\u0c86\u0cb2\u0cc2\u0c97\u0ca1\u0ccd\u0ca1\u0cc6",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 18.85,
+    "p50": 20.69,
+    "p90": 22.76,
+    "published_low": 19,
+    "published_high": 23,
+    "coverage_pct": 86.1,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 22.82
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 22.52
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 23.25
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 23.35
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 22.13
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 20.36
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 20.69
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "carrot",
+    "crop_name_en": "Carrot",
+    "crop_name_kn": "\u0c97\u0c9c\u0ccd\u0c9c\u0cb0\u0cbf",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 32.65,
+    "p50": 35.3,
+    "p90": 36.59,
+    "published_low": 33,
+    "published_high": 36,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 29.37
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.47
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 33.83
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 33.8
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 34.56
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 34.51
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 35.3
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "french_beans",
+    "crop_name_en": "French Beans",
+    "crop_name_kn": "\u0cac\u0cc0\u0ca8\u0ccd\u0cb8\u0ccd",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 32.92,
+    "p50": 35.54,
+    "p90": 38.09,
+    "published_low": 33,
+    "published_high": 38,
+    "coverage_pct": 78.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 37.29
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 37.45
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 36.7
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 35.56
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 34.19
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 35.08
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 35.54
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cabbage",
+    "crop_name_en": "Cabbage",
+    "crop_name_kn": "\u0c8e\u0cb2\u0cc6\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 14.94,
+    "p50": 16.3,
+    "p90": 18.24,
+    "published_low": 15,
+    "published_high": 18,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 16.56
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 16.03
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 16.48
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 17.06
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 16.06
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 16.08
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 16.3
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cauliflower",
+    "crop_name_en": "Cauliflower",
+    "crop_name_kn": "\u0cb9\u0cc2\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 25.71,
+    "p50": 28.09,
+    "p90": 30.32,
+    "published_low": 26,
+    "published_high": 30,
+    "coverage_pct": 92.6,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 28.92
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 28.63
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 29.4
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 28.19
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 29.94
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 27.61
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 28.09
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "brinjal",
+    "crop_name_en": "Brinjal (Eggplant)",
+    "crop_name_kn": "\u0cac\u0ca6\u0ca8\u0cc6\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 26.61,
+    "p50": 28.92,
+    "p90": 31.17,
+    "published_low": 27,
+    "published_high": 31,
+    "coverage_pct": 90.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 26.27
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 29.47
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 29.31
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 27.47
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 28.6
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.02
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 28.92
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "green_chilli",
+    "crop_name_en": "Green Chilli",
+    "crop_name_kn": "\u0cb9\u0cb8\u0cbf\u0cb0\u0cc1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 49.97,
+    "p50": 53.86,
+    "p90": 57.64,
+    "published_low": 50,
+    "published_high": 57,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 51.4
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 52.58
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 51.04
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 49.4
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 52.0
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 55.15
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 53.86
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "capsicum",
+    "crop_name_en": "Capsicum (Bell Pepper)",
+    "crop_name_kn": "\u0ca6\u0cca\u0ca1\u0ccd\u0ca1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_kolar",
+    "delivery_date": "2026-11-21",
+    "p10": 46.72,
+    "p50": 50.52,
+    "p90": 53.87,
+    "published_low": 47,
+    "published_high": 54,
+    "coverage_pct": 88.0,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 45.23
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 46.26
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 48.56
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 49.31
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 49.74
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 51.71
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 50.52
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato",
+    "crop_name_en": "Tomato",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 19.0,
+    "p50": 20.5,
+    "p90": 22.9,
+    "published_low": 19,
+    "published_high": 23,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 23.01
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 23.33
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 22.23
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 23.08
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 21.57
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 20.56
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 20.5
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "tomato_organic",
+    "crop_name_en": "Tomato (Organic)",
+    "crop_name_kn": "\u0c9f\u0cca\u0cae\u0cc6\u0c9f\u0cca (\u0cb8\u0cbe\u0cb5\u0caf\u0cb5)",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 25.65,
+    "p50": 27.67,
+    "p90": 30.91,
+    "published_low": 26,
+    "published_high": 31,
+    "coverage_pct": 83.3,
+    "pricing_mode": "derived_premium",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 31.06
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 31.49
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 30.02
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 31.16
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 29.12
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 27.76
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 27.67
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "onion",
+    "crop_name_en": "Onion",
+    "crop_name_kn": "\u0c88\u0cb0\u0cc1\u0cb3\u0ccd\u0cb3\u0cbf",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 28.74,
+    "p50": 30.99,
+    "p90": 33.1,
+    "published_low": 29,
+    "published_high": 33,
+    "coverage_pct": 93.5,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 27.96
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.4
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 29.73
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 29.49
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 31.16
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 31.61
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 30.99
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "potato",
+    "crop_name_en": "Potato",
+    "crop_name_kn": "\u0c86\u0cb2\u0cc2\u0c97\u0ca1\u0ccd\u0ca1\u0cc6",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 18.85,
+    "p50": 20.69,
+    "p90": 22.76,
+    "published_low": 19,
+    "published_high": 23,
+    "coverage_pct": 86.1,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 22.82
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 22.52
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 23.25
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 23.35
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 22.13
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 20.36
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 20.69
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "carrot",
+    "crop_name_en": "Carrot",
+    "crop_name_kn": "\u0c97\u0c9c\u0ccd\u0c9c\u0cb0\u0cbf",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 32.65,
+    "p50": 35.3,
+    "p90": 36.59,
+    "published_low": 33,
+    "published_high": 36,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 29.37
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 30.47
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 33.83
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 33.8
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 34.56
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 34.51
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 35.3
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "french_beans",
+    "crop_name_en": "French Beans",
+    "crop_name_kn": "\u0cac\u0cc0\u0ca8\u0ccd\u0cb8\u0ccd",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 32.92,
+    "p50": 35.54,
+    "p90": 38.09,
+    "published_low": 33,
+    "published_high": 38,
+    "coverage_pct": 78.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 37.29
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 37.45
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 36.7
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 35.56
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 34.19
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 35.08
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 35.54
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cabbage",
+    "crop_name_en": "Cabbage",
+    "crop_name_kn": "\u0c8e\u0cb2\u0cc6\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 14.94,
+    "p50": 16.3,
+    "p90": 18.24,
+    "published_low": 15,
+    "published_high": 18,
+    "coverage_pct": 85.2,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 16.56
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 16.03
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 16.48
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 17.06
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 16.06
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 16.08
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 16.3
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "cauliflower",
+    "crop_name_en": "Cauliflower",
+    "crop_name_kn": "\u0cb9\u0cc2\u0c95\u0ccb\u0cb8\u0cc1",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 25.71,
+    "p50": 28.09,
+    "p90": 30.32,
+    "published_low": 26,
+    "published_high": 30,
+    "coverage_pct": 92.6,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 28.92
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 28.63
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 29.4
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 28.19
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 29.94
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 27.61
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 28.09
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "brinjal",
+    "crop_name_en": "Brinjal (Eggplant)",
+    "crop_name_kn": "\u0cac\u0ca6\u0ca8\u0cc6\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 26.61,
+    "p50": 28.92,
+    "p90": 31.17,
+    "published_low": 27,
+    "published_high": 31,
+    "coverage_pct": 90.7,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 26.27
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 29.47
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 29.31
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 27.47
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 28.6
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 29.02
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 28.92
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "green_chilli",
+    "crop_name_en": "Green Chilli",
+    "crop_name_kn": "\u0cb9\u0cb8\u0cbf\u0cb0\u0cc1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 49.97,
+    "p50": 53.86,
+    "p90": 57.64,
+    "published_low": 50,
+    "published_high": 57,
+    "coverage_pct": 83.3,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 51.4
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 52.58
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 51.04
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 49.4
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 52.0
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 55.15
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 53.86
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  },
+  {
+    "crop_id": "capsicum",
+    "crop_name_en": "Capsicum (Bell Pepper)",
+    "crop_name_kn": "\u0ca6\u0cca\u0ca1\u0ccd\u0ca1 \u0cae\u0cc6\u0ca3\u0cb8\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf",
+    "hub_id": "hub_chikkaballapur",
+    "delivery_date": "2026-11-21",
+    "p10": 46.72,
+    "p50": 50.52,
+    "p90": 53.87,
+    "published_low": 47,
+    "published_high": 54,
+    "coverage_pct": 88.0,
+    "pricing_mode": "ml_default",
+    "is_fallback": false,
+    "is_overridden": false,
+    "override_low": null,
+    "override_high": null,
+    "override_reason": null,
+    "sparkline_7d": [
+      {
+        "date": "2026-11-15",
+        "p50_inr_per_kg": 45.23
+      },
+      {
+        "date": "2026-11-16",
+        "p50_inr_per_kg": 46.26
+      },
+      {
+        "date": "2026-11-17",
+        "p50_inr_per_kg": 48.56
+      },
+      {
+        "date": "2026-11-18",
+        "p50_inr_per_kg": 49.31
+      },
+      {
+        "date": "2026-11-19",
+        "p50_inr_per_kg": 49.74
+      },
+      {
+        "date": "2026-11-20",
+        "p50_inr_per_kg": 51.71
+      },
+      {
+        "date": "2026-11-21",
+        "p50_inr_per_kg": 50.52
+      }
+    ],
+    "model_version": "price_lgbm_20261120T074042Z",
+    "generated_at": "2026-11-20T07:40:44.382567Z"
+  }
+]
